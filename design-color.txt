@@ -1,0 +1,5 @@
+#FF7E33 orange - critical CTA, buttons 
+#F5F5F5 light gray - background, code blocks
+#333333 dark gray - primary text
+#3498DB secondary blue - links, accents
+#0069FF primary blue - trust, logo, main
