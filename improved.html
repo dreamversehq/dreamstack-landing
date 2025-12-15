@@ -224,6 +224,16 @@
                     <i class="devicon-postgresql-plain text-3xl text-[#336791]"></i>
                     <span class="text-lg font-bold text-slate-700">PostgreSQL</span>
                 </div>
+                <!-- MySQL -->
+                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
+                    <i class="devicon-mysql-plain text-3xl text-[#4479A1]"></i>
+                    <span class="text-lg font-bold text-slate-700">MySQL</span>
+                </div>
+                <!-- SQLite -->
+                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
+                    <i class="devicon-sqlite-plain text-3xl text-[#003B57]"></i>
+                    <span class="text-lg font-bold text-slate-700">SQLite</span>
+                </div>
                 <!-- MongoDB -->
                 <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
                     <i class="devicon-mongodb-plain text-3xl text-[#47A248]"></i>
@@ -263,6 +273,16 @@
                     <i class="devicon-postgresql-plain text-3xl text-[#336791]"></i>
                     <span class="text-lg font-bold text-slate-700">PostgreSQL</span>
                 </div>
+                <!-- MySQL -->
+                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
+                    <i class="devicon-mysql-plain text-3xl text-[#4479A1]"></i>
+                    <span class="text-lg font-bold text-slate-700">MySQL</span>
+                </div>
+                <!-- SQLite -->
+                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
+                    <i class="devicon-sqlite-plain text-3xl text-[#003B57]"></i>
+                    <span class="text-lg font-bold text-slate-700">SQLite</span>
+                </div>
                 <!-- MongoDB -->
                 <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
                     <i class="devicon-mongodb-plain text-3xl text-[#47A248]"></i>
@@ -292,11 +312,13 @@
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-slate-900">Database Flexibility</h3>
                     <p class="text-slate-600 mb-4 leading-relaxed">
-                        One codebase, multiple databases. Switch from PostgreSQL to MongoDB without rewriting business logic.
+                        One codebase, any SQL database or MongoDB. Switch from PostgreSQL to MySQL, SQLite, or MongoDB without rewriting business logic.
                     </p>
                     <div class="flex flex-wrap gap-2">
                         <span class="text-xs bg-blue-50 text-brand-blue px-2 py-1 rounded font-medium border border-blue-100">Prisma</span>
-                        <span class="text-xs bg-blue-50 text-brand-blue px-2 py-1 rounded font-medium border border-blue-100">Mongoose</span>
+                        <span class="text-xs bg-blue-50 text-brand-blue px-2 py-1 rounded font-medium border border-blue-100">PostgreSQL</span>
+                        <span class="text-xs bg-blue-50 text-brand-blue px-2 py-1 rounded font-medium border border-blue-100">MySQL</span>
+                        <span class="text-xs bg-blue-50 text-brand-blue px-2 py-1 rounded font-medium border border-blue-100">MongoDB</span>
                     </div>
                 </div>
 
@@ -322,7 +344,7 @@
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-slate-900">Production-Ready Tests</h3>
                     <p class="text-slate-600 mb-4 leading-relaxed">
-                        471 comprehensive tests covering auth, OAuth, file uploads, pagination, error handling, and more.
+                        471+ comprehensive tests covering auth, OAuth, file uploads, pagination, error handling, and more.
                     </p>
                     <div class="flex gap-2 text-xs font-medium text-green-700">
                         <span class="bg-green-50 border border-green-200 px-2 py-1 rounded">✓ 100% Coverage</span>
@@ -365,18 +387,18 @@
 
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
                     <div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600 mb-4">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
                     </div>
-                    <h3 class="font-bold text-lg mb-2 text-slate-900">Smart Pagination</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">Don't build it again. Standardized `page`, `limit`, `sortBy`, and `sortOrder` params on all list endpoints.</p>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900">Clean Architecture</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Maintainable by design. Separation of concerns with Controllers, Services, and Repositories. Easy to test and scale.</p>
                 </div>
 
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
                     <div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600 mb-4">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     </div>
-                    <h3 class="font-bold text-lg mb-2 text-slate-900">Robust File Uploads</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">Abstracted storage provider. Switch between Local disk (dev) and AWS S3 (prod) with one config change.</p>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900">No-Decorator DI</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Simple, type-safe dependency injection without the decorator bloat. Pure TypeScript classes and constructor injection.</p>
                 </div>
 
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
@@ -384,15 +406,15 @@
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                     </div>
                     <h3 class="font-bold text-lg mb-2 text-slate-900">Auto-Generated Docs</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">Always up-to-date. Swagger UI for Express and Scalar for Hono. Generated directly from your Zod schemas.</p>
+                    <p class="text-sm text-slate-600 leading-relaxed">Always up-to-date. Swagger UI for Express and Scalar for Hono. Generated from Zod schemas and JSDoc comments.</p>
                 </div>
 
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
                     <div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600 mb-4">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
                     </div>
-                    <h3 class="font-bold text-lg mb-2 text-slate-900">Enterprise Security</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">Sleep safe. Rate limiting, Helmet, CORS, input sanitization, and OWASP best practices implemented by default.</p>
+                    <h3 class="font-bold text-lg mb-2 text-slate-900">Built-in Logging</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Structured JSON logging with request IDs, error tracking, and performance metrics. Ready for Datadog or CloudWatch.</p>
                 </div>
             </div>
         </div>
