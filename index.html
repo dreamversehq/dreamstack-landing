@@ -21,8 +21,8 @@
     <meta property="twitter:description" content="471 tests. Dual framework support (Express ↔ Hono). Built from Abuja, competing globally.">
     <meta property="twitter:image" content="https://dreamverse.ng/dreamstack/twitter-card.jpg">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS (built) -->
+    <link rel="stylesheet" href="./dist/styles.css">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,33 +30,6 @@
     
     <!-- Devicon -->
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        'brand-orange': '#FF7E33',
-                        'brand-blue': '#0069FF',
-                        'brand-blue-light': '#3498DB',
-                        'brand-gray': '#333333',
-                        'brand-gray-light': '#F5F5F5',
-                    },
-                    animation: {
-                        'infinite-scroll': 'infinite-scroll 25s linear infinite',
-                    },
-                    keyframes: {
-                        'infinite-scroll': {
-                            from: { transform: 'translateX(0)' },
-                            to: { transform: 'translateX(-100%)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         /* Custom scrollbar for code blocks */
         .code-scroll::-webkit-scrollbar {
@@ -183,7 +156,7 @@
                         </div>
                         <!-- Video Content -->
                         <div class="relative w-full aspect-video bg-slate-900">
-                            <video class="w-full h-full object-cover" autoplay loop muted playsinline poster="assets/dreamstack%20gumroad%20cover.png">
+                            <video class="w-full h-full object-cover" autoplay loop muted playsinline poster="assets/dreamstack-gumroad-cover.png">
                                 <source src="assets/demo.mp4" type="video/mp4">
                                 <!-- Fallback / Placeholder if video missing -->
                                 <div class="absolute inset-0 flex items-center justify-center">
