@@ -8,6 +8,7 @@
     "watch:css": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch --content \"./**/*.html\"",
     "build": "pnpm run build:css",
     "preview": "pnpm serve .",
+    "dev": "live-server --port=3000 --open=/",
     "update-browserslist": "npx update-browserslist-db@latest"
   },
   "keywords": [],
@@ -16,6 +17,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.24",
-    "tailwindcss": "^3.4.5"
+    "tailwindcss": "^3.4.5",
+    "live-server": "^1.2.2"
   }
 }

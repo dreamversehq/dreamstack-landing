@@ -18,11 +18,11 @@ pnpm run build
 
 This generates `./dist/styles.css` which `index.html` references instead of the CDN.
 
-3. Preview the site locally (uses `npx serve`):
+3. Preview the site locally:
 
 ```bash
 pnpm run preview
-# then open http://localhost:5000 (or the port `serve` prints)
+# then open the local address the server prints (e.g. http://localhost:3000)
 ```
 
 Development
@@ -32,6 +32,16 @@ Development
 ```bash
 pnpm run watch:css
 ```
+
+Development (auto-reload)
+
+If you want a small dev server that automatically reloads the browser when files change, use:
+
+```bash
+pnpm run dev
+```
+
+This runs `live-server` on port 3000 and opens `/` in your browser. It will reload when HTML, CSS, or JS files change.
 
 Optional housekeeping
 
@@ -47,4 +57,9 @@ Notes
 - Tailwind input CSS: `src/styles.css`
 - Built CSS: `dist/styles.css`
 
-If you'd like, I can add a devDependency for a tiny static server (so `pnpm run preview` doesn't rely on `npx`) or wire a simple `serve` devDependency. Want that added?
+Notes
+
+- `pnpm run dev` uses `live-server` (installed as a devDependency) for quick development with auto-reload.
+- `pnpm run preview` still uses `serve` via `pnpm serve .` (this may rely on npx if `serve` isn't installed globally). If you prefer, I can add `serve` as a devDependency.
+
+If you'd like any additional scripts (e.g. a combined watcher + server, or a single command that builds and serves), tell me which behavior you prefer and I can wire it up.

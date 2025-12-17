@@ -1,915 +1,118 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="./assets/logo.png">
-    <title>DreamStack - Production-Ready Node.js Backend Template</title>
-    <meta name="description" content="Ship faster with DreamStack - a battle-tested Node.js backend template with 471 tests, dual framework support, and production-grade features. Built in Abuja, competing globally.">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dreamverse.ng/dreamstack">
-    <meta property="og:title" content="DreamStack - Production-Ready Node.js Backend Template">
-    <meta property="og:description" content="471 tests. Dual framework support (Express ↔ Hono). Built from Abuja, competing globally. Launch price: $197-297.">
-    <meta property="og:image" content="https://dreamverse.ng/dreamstack/og-image.jpg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://dreamverse.ng/dreamstack">
-    <meta property="twitter:title" content="DreamStack - Production-Ready Node.js Backend Template">
-    <meta property="twitter:description" content="471 tests. Dual framework support (Express ↔ Hono). Built from Abuja, competing globally.">
-    <meta property="twitter:image" content="https://dreamverse.ng/dreamstack/twitter-card.jpg">
-    
-    <!-- Tailwind CSS (built) -->
-    <link rel="stylesheet" href="./dist/styles.css">
-    <!-- Fonts -->
+    <title>DreamVerse | Software Foundations</title>
+    <meta name="description" content="DreamVerse — Building production-grade software foundations. Parent brand of DreamStack.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Devicon -->
-    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-orange': '#FF7E33',
+                        'brand-blue': '#0069FF',
+                        'brand-blue-light': '#3498DB',
+                        'brand-gray': '#333333',
+                        'brand-gray-light': '#F5F5F5',
+                    },
+                    animation: {
+                        'infinite-scroll': 'infinite-scroll 25s linear infinite',
+                    },
+                    keyframes: {
+                        'infinite-scroll': {
+                            from: { transform: 'translateX(0)' },
+                            to: { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        /* Custom scrollbar for code blocks */
-        .code-scroll::-webkit-scrollbar {
-            height: 8px;
-        }
-        .code-scroll::-webkit-scrollbar-track {
-            background: #1e1e1e;
-        }
-        .code-scroll::-webkit-scrollbar-thumb {
-            background: #4a4a4a;
-            border-radius: 4px;
-        }
+        /* Set font family; allow normal scrolling on all viewports */
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
     </style>
 </head>
-<body class="bg-white text-slate-600 antialiased selection:bg-brand-orange/20 selection:text-brand-orange overflow-x-hidden">
+<body class="bg-white text-slate-600 antialiased selection:bg-brand-orange/20 selection:text-brand-orange">
 
-    <!-- Navigation (Simple) -->
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center gap-2">
-                    <img src="./assets/logo-svg.svg" alt="DreamStack Logo" class="w-8 h-8">
-                    <span class="font-bold text-xl tracking-tight text-slate-900">DreamStack</span>
-                </div>
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="#features" class="text-sm font-medium text-slate-600 hover:text-brand-blue transition-colors">Features</a>
-                    <a href="#pricing" class="text-sm font-medium text-slate-600 hover:text-brand-blue transition-colors">Pricing</a>
-                    <a href="#faq" class="text-sm font-medium text-slate-600 hover:text-brand-blue transition-colors">FAQ</a>
-                    <a href="https://gumroad.com/l/dreamstack" class="text-sm font-medium bg-brand-gray text-white px-4 py-2 rounded-lg hover:bg-slate-800 transition-colors">Get Started</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div class="max-w-7xl mx-auto">
-            <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
-                <!-- Text Content -->
-                <div class="lg:col-span-6 text-center lg:text-left mb-12 lg:mb-0">
-                    <!-- Badge -->
-                    <div class="inline-flex items-center gap-2 bg-slate-100 border border-slate-200 rounded-full px-3 py-1 mb-8">
-                        <span class="flex h-2 w-2 relative">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-orange"></span>
-                        </span>
-                        <span class="text-xs font-medium text-slate-600 uppercase tracking-wide">Early Access Special</span>
-                    </div>
-
-                    <h1 class="text-5xl sm:text-6xl lg:text-6xl font-bold text-slate-900 tracking-tight mb-4 leading-[1.1]">
-                        Production-Ready Node.js APIs <br class="hidden lg:block" />
-                        <span class="text-brand-blue">Built on Clean Architecture</span>
-                    </h1>
-
-                    <p class="text-2xl md:text-3xl font-bold text-slate-800 mb-6 tracking-tight">
-                        Ship in Hours — Maintain for Years
-                    </p>
-
-                    <p class="text-lg sm:text-xl text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                        Stop rebuilding auth, RBAC, and observability. Start with a framework-agnostic, comprehensively tested backend foundation designed for real production systems.
-                    </p>
-
-                    <!-- Credibility Strip -->
-                    <p class="text-sm font-semibold text-slate-500 mb-6 uppercase tracking-wide">
-                        Not a toy starter. Built for long-lived codebases and real teams.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-                        <a href="https://gumroad.com/l/dreamstack" class="inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-[#e66a20] text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-lg shadow-brand-orange/20 hover:shadow-xl hover:-translate-y-0.5">
-                            Get DreamStack - $197
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                            </svg>
-                        </a>
-                        <a href="https://dreamstack-docs.vercel.app" target="_blank" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-100 border border-slate-200 text-slate-600 px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:border-slate-300">
-                            <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                            Read the Docs
-                        </a>
-                    </div>
-
-                    <!-- Social Proof -->
-                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-x-8 gap-y-4 text-sm font-medium text-slate-500">
-                        <div class="flex items-center gap-2">
-                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                            <span>471+ Tests Included</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-5 h-5 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                            <span>Express & Hono Support</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-5 h-5 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                            </svg>
-                            <span>Zero Vendor Lock-in</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="0" y="0" width="8" height="24" class="text-green-500" fill="currentColor" />
-                                <rect x="8" y="0" width="8" height="24" fill="white" stroke="gray" stroke-width="0.1" />
-                                <rect x="16" y="0" width="8" height="24" class="text-green-500" fill="currentColor" />
-                            </svg>
-                            <span>🇳🇬 Built in Abuja → Global</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Visual Content (Demo Video) -->
-                <div class="lg:col-span-6 relative">
-                    <div class="absolute -inset-4 bg-gradient-to-r from-brand-blue/20 to-brand-orange/20 rounded-3xl blur-2xl opacity-50"></div>
-                    <div class="relative bg-[#1E1E1E] rounded-xl shadow-2xl border border-slate-800 overflow-hidden">
-                        <!-- Window Controls -->
-                        <div class="flex items-center gap-2 px-4 py-3 border-b border-slate-800 bg-[#252526] z-10 relative">
-                            <div class="flex gap-1.5">
-                                <div class="w-3 h-3 rounded-full bg-[#FF5F56]"></div>
-                                <div class="w-3 h-3 rounded-full bg-[#FFBD2E]"></div>
-                                <div class="w-3 h-3 rounded-full bg-[#27C93F]"></div>
-                            </div>
-                            <div class="ml-4 text-xs text-slate-400 font-mono">DreamStack Demo</div>
-                        </div>
-                        <!-- Video Content -->
-                        <div class="relative w-full aspect-video bg-slate-900">
-                            <video class="w-full h-full object-cover" autoplay loop muted playsinline poster="assets/dreamstack-gumroad-cover.png">
-                                <source src="assets/demo.mp4" type="video/mp4">
-                                <!-- Fallback / Placeholder if video missing -->
-                                <div class="absolute inset-0 flex items-center justify-center">
-                                    <div class="text-center p-6">
-                                        <div class="font-mono text-sm text-slate-500 mb-2">demo.mp4 not found</div>
-                                        <div class="text-xs text-slate-500">Place your 12-15s loop video in assets/demo.mp4</div>
-                                    </div>
-                                </div>
-                            </video>
-                        </div>
-                    </div>
-                    <!-- Floating Feature Badge -->
-                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-xl border border-slate-200 hidden sm:block">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            </div>
-                            <div>
-                                <div class="text-sm font-bold text-slate-900">Save 40+ Hours</div>
-                                <div class="text-xs text-slate-500">Production-Ready Setup</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Logos / Tech Stack -->
-    <section class="py-10 border-y border-slate-200 bg-slate-50 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 text-center mb-8">
-            <p class="text-sm font-medium text-slate-500">POWERED BY MODERN TECH STACK</p>
-        </div>
+    <main class="min-h-screen flex flex-col justify-between max-w-7xl mx-auto px-6 py-8 md:px-12 md:py-12 lg:px-16 lg:py-16">
         
-        <div class="relative flex overflow-x-hidden group">
-            <div class="animate-infinite-scroll flex items-center gap-16 whitespace-nowrap px-8">
-                <!-- Node.js -->
-                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
-                    <i class="devicon-nodejs-plain text-3xl text-[#339933]"></i>
-                    <span class="text-lg font-bold text-slate-700">Node.js</span>
-                </div>
-                <!-- TypeScript -->
-                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
-                    <i class="devicon-typescript-plain text-3xl text-[#3178C6]"></i>
-                    <span class="text-lg font-bold text-slate-700">TypeScript</span>
-                </div>
-                <!-- Express -->
-                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
-                    <i class="devicon-express-original text-3xl text-slate-800"></i>
-                    <span class="text-lg font-bold text-slate-700">Express</span>
-                </div>
-                <!-- Hono (Custom SVG as fallback) -->
-                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
-                    <svg class="h-8 w-auto text-[#E36002]" viewBox="0 0 24 24" fill="currentColor"><path d="M12.7 1.5c-.3-.2-.8-.2-1.1 0C8.3 3.4 2 7.5 2 13c0 5.5 4.5 10 10 10s10-4.5 10-10c0-5.5-6.3-9.6-9.3-11.5z"/></svg>
-                    <span class="text-lg font-bold text-slate-700">Hono</span>
-                </div>
-                <!-- Prisma -->
-                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
-                    <i class="devicon-prisma-original text-3xl text-[#2D3748]"></i>
-                    <span class="text-lg font-bold text-slate-700">Prisma</span>
-                </div>
-                <!-- PostgreSQL -->
-                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
-                    <i class="devicon-postgresql-plain text-3xl text-[#336791]"></i>
-                    <span class="text-lg font-bold text-slate-700">PostgreSQL</span>
-                </div>
-                <!-- MySQL -->
-                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
-                    <i class="devicon-mysql-plain text-3xl text-[#4479A1]"></i>
-                    <span class="text-lg font-bold text-slate-700">MySQL</span>
-                </div>
-                <!-- SQLite -->
-                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
-                    <i class="devicon-sqlite-plain text-3xl text-[#003B57]"></i>
-                    <span class="text-lg font-bold text-slate-700">SQLite</span>
-                </div>
-                <!-- MongoDB -->
-                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
-                    <i class="devicon-mongodb-plain text-3xl text-[#47A248]"></i>
-                    <span class="text-lg font-bold text-slate-700">MongoDB</span>
-                </div>
+        <header>
+            <div class="flex items-center gap-2">
+                <img src="./assets/logo-svg.svg" alt="DreamVerse Logo" class="w-8 h-8" onerror="this.style.display='none'; document.getElementById('fallback-icon').style.display='block';">
+                
+                <svg id="fallback-icon" class="w-8 h-8 text-brand-orange hidden" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+
+                <span class="font-bold text-xl tracking-tight text-slate-900">DreamVerse</span>
             </div>
-            
-            <!-- Duplicate for seamless loop -->
-            <div class="animate-infinite-scroll flex items-center gap-16 whitespace-nowrap px-8" aria-hidden="true">
-                <!-- Node.js -->
-                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
-                    <i class="devicon-nodejs-plain text-3xl text-[#339933]"></i>
-                    <span class="text-lg font-bold text-slate-700">Node.js</span>
-                </div>
-                <!-- TypeScript -->
-                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
-                    <i class="devicon-typescript-plain text-3xl text-[#3178C6]"></i>
-                    <span class="text-lg font-bold text-slate-700">TypeScript</span>
-                </div>
-                <!-- Express -->
-                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
-                    <i class="devicon-express-original text-3xl text-slate-800"></i>
-                    <span class="text-lg font-bold text-slate-700">Express</span>
-                </div>
-                <!-- Hono (Custom SVG as fallback) -->
-                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
-                    <svg class="h-8 w-auto text-[#E36002]" viewBox="0 0 24 24" fill="currentColor"><path d="M12.7 1.5c-.3-.2-.8-.2-1.1 0C8.3 3.4 2 7.5 2 13c0 5.5 4.5 10 10 10s10-4.5 10-10c0-5.5-6.3-9.6-9.3-11.5z"/></svg>
-                    <span class="text-lg font-bold text-slate-700">Hono</span>
-                </div>
-                <!-- Prisma -->
-                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
-                    <i class="devicon-prisma-original text-3xl text-[#2D3748]"></i>
-                    <span class="text-lg font-bold text-slate-700">Prisma</span>
-                </div>
-                <!-- PostgreSQL -->
-                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
-                    <i class="devicon-postgresql-plain text-3xl text-[#336791]"></i>
-                    <span class="text-lg font-bold text-slate-700">PostgreSQL</span>
-                </div>
-                <!-- MySQL -->
-                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
-                    <i class="devicon-mysql-plain text-3xl text-[#4479A1]"></i>
-                    <span class="text-lg font-bold text-slate-700">MySQL</span>
-                </div>
-                <!-- SQLite -->
-                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
-                    <i class="devicon-sqlite-plain text-3xl text-[#003B57]"></i>
-                    <span class="text-lg font-bold text-slate-700">SQLite</span>
-                </div>
-                <!-- MongoDB -->
-                <div class="flex items-center gap-2 hover:scale-110 transition-all duration-300">
-                    <i class="devicon-mongodb-plain text-3xl text-[#47A248]"></i>
-                    <span class="text-lg font-bold text-slate-700">MongoDB</span>
-                </div>
-            </div>
-        </div>
-    </section>
+        </header>
 
-    <!-- Unique Value Props -->
-    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-                    Why DreamStack is Different
-                </h2>
-                <p class="text-lg text-slate-600">
-                    Most templates lock you in. We give you choices.
-                </p>
-            </div>
+        <section class="flex flex-col items-start max-w-4xl mt-12 md:mt-0">
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-8">
+                Building production-grade <br class="hidden sm:block" />
+                software foundations.
+            </h1>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- USP 1 (Database) -->
-                <div class="group bg-slate-50 p-8 rounded-2xl border border-blue-100 shadow-sm hover:shadow-lg hover:border-brand-blue transition-all hover:-translate-y-1">
-                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-brand-blue mb-6 shadow-sm group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-slate-900">Database Flexibility</h3>
-                    <p class="text-slate-600 mb-4 leading-relaxed">
-                        One codebase, any SQL database or MongoDB. Switch from PostgreSQL to MySQL, SQLite, or MongoDB without rewriting business logic.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-blue-50 text-brand-blue px-2 py-1 rounded font-medium border border-blue-100">Prisma</span>
-                        <span class="text-xs bg-blue-50 text-brand-blue px-2 py-1 rounded font-medium border border-blue-100">PostgreSQL</span>
-                        <span class="text-xs bg-blue-50 text-brand-blue px-2 py-1 rounded font-medium border border-blue-100">MySQL</span>
-                        <span class="text-xs bg-blue-50 text-brand-blue px-2 py-1 rounded font-medium border border-blue-100">MongoDB</span>
-                    </div>
-                </div>
-
-                <!-- USP 2 (Framework - Highlighted) -->
-                <div class="group bg-slate-50 p-8 rounded-2xl border border-blue-100 shadow-sm hover:shadow-lg hover:border-brand-blue transition-all hover:-translate-y-1 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-brand-blue"></div>
-                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-brand-blue mb-6 shadow-sm group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-slate-900">Choose Your Framework</h3>
-                    <p class="text-slate-600 mb-4 leading-relaxed">
-                        Switch between Express and Hono with one environment variable. No code changes. No framework lock-in.
-                    </p>
-                    <div class="bg-slate-800 rounded-lg p-3 border border-slate-700 font-mono text-xs text-slate-300">
-                        <span class="text-brand-blue-light">FRAMEWORK</span>=express | hono
-                    </div>
-                </div>
-
-                <!-- USP 3 (Tests) -->
-                <div class="group bg-slate-50 p-8 rounded-2xl border border-blue-100 shadow-sm hover:shadow-lg hover:border-brand-blue transition-all hover:-translate-y-1">
-                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-green-600 mb-6 shadow-sm group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-slate-900">Production-Ready Tests</h3>
-                    <p class="text-slate-600 mb-4 leading-relaxed">
-                        471+ comprehensive tests covering auth, OAuth, file uploads, pagination, error handling, and more.
-                    </p>
-                    <div class="flex gap-2 text-xs font-medium text-green-700">
-                        <span class="bg-green-50 border border-green-200 px-2 py-1 rounded">✓ 100% Coverage</span>
-                        <span class="bg-green-50 border border-green-200 px-2 py-1 rounded">✓ Critical Paths</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Grid -->
-    <section id="features" class="py-24 px-4 sm:px-6 lg:px-8 bg-slate-100">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-                    Everything You Need to Ship Fast
-                </h2>
-                <p class="text-lg text-slate-600">
-                    Stop reinventing the wheel. DreamStack includes battle-tested implementations of every feature your SaaS needs.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Feature Items -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
-                    <div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600 mb-4">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2 text-slate-900">Auth & Authorization</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">JWT + OAuth 2.0 (Google, GitHub) ready. Role-Based Access Control (RBAC) and session management pre-configured.</p>
-                </div>
-
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
-                    <div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600 mb-4">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2 text-slate-900">Database Flexibility</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">Prisma OR Mongoose - switch with one env var. Includes migration tooling, pagination, sorting, and filtering.</p>
-                </div>
-
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
-                    <div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600 mb-4">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2 text-slate-900">Production Observability</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">Structured logging (Pino), Error tracking (Sentry), and OpenTelemetry integration. Know exactly what's happening.</p>
-                </div>
-
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
-                    <div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600 mb-4">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2 text-slate-900">Developer Experience</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">TypeScript Strict Mode, 471 comprehensive tests, auto-generated OpenAPI docs, and hot reload ready.</p>
-                </div>
-
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
-                    <div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600 mb-4">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 002 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2H5a2 2 0 00-2 2v2M7 7h10"/></svg>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2 text-slate-900">Clean Architecture</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">Controller → Service → Repository pattern. Framework-agnostic core logic. DI Container without decorator bloat.</p>
-                </div>
-
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
-                    <div class="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600 mb-4">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2 text-slate-900">File Uploads & Storage</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">Local and S3-compatible storage providers included. Secure file handling, validation, and serving out of the box.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-   <!-- Comparison Table -->
-<section class="py-24 px-4 sm:px-6 lg:px-8 bg-white">
-    <div class="max-w-5xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-slate-900 tracking-tight">
-            How DreamStack Compares
-        </h2>
-
-        <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
-            <table class="w-full border-collapse bg-white text-sm min-w-[600px]">
-                <thead>
-                    <tr class="bg-slate-100 border-b border-slate-200">
-                        <th class="px-6 py-5 text-left font-semibold text-slate-900">Feature</th>
-                        <th class="px-6 py-5 text-center font-bold text-brand-blue text-base">DreamStack</th>
-                        <th class="px-6 py-5 text-center font-medium text-slate-500">Typical Starter Kit</th>
-                        <th class="px-6 py-5 text-center font-medium text-slate-500">Premium Boilerplate</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-100">
-                    <tr>
-                        <td class="px-6 py-4 text-slate-600 font-medium">Framework Flexibility</td>
-                        <td class="px-6 py-4 text-center text-green-600 font-bold bg-blue-50/30">
-                            <div class="font-bold">✓ Dual Support</div>
-                            <div class="text-xs text-slate-600 font-normal mt-1">Express ↔ Hono</div>
-                        </td>
-                        <td class="px-6 py-4 text-center text-slate-400">
-                            <div class="font-medium">✗ Single</div>
-                            <div class="text-xs text-slate-500 mt-1">Locked to one</div>
-                        </td>
-                        <td class="px-6 py-4 text-center text-slate-400">
-                            <div class="font-medium">✗ Single</div>
-                            <div class="text-xs text-slate-500 mt-1">Locked to one</div>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="px-6 py-4 text-slate-600 font-medium">Comprehensive Tests</td>
-                        <td class="px-6 py-4 text-center text-brand-blue font-bold bg-blue-50/30">
-                            <div class="font-bold">471 Tests</div>
-                            <div class="text-xs text-slate-600 font-normal mt-1">All features covered</div>
-                        </td>
-                        <td class="px-6 py-4 text-center text-slate-500">
-                            <div class="font-medium">Minimal/None</div>
-                            <div class="text-xs text-slate-500 mt-1">You write them</div>
-                        </td>
-                        <td class="px-6 py-4 text-center text-slate-500">
-                            <div class="font-medium">Varies</div>
-                            <div class="text-xs text-slate-500 mt-1">Some coverage</div>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="px-6 py-4 text-slate-600 font-medium">Database Flexibility</td>
-                        <td class="px-6 py-4 text-center text-green-600 font-bold bg-blue-50/30">
-                            <div class="font-bold">✓ Multi-DB</div>
-                            <div class="text-xs text-slate-600 font-normal mt-1">SQL + MongoDB</div>
-                        </td>
-                        <td class="px-6 py-4 text-center text-slate-400">
-                            <div class="font-medium">✗ Fixed</div>
-                            <div class="text-xs text-slate-500 mt-1">One database</div>
-                        </td>
-                        <td class="px-6 py-4 text-center text-slate-500">
-                            <div class="font-medium">Usually Fixed</div>
-                            <div class="text-xs text-slate-500 mt-1">One database</div>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="px-6 py-4 text-slate-600 font-medium">Architecture Pattern</td>
-                        <td class="px-6 py-4 text-center text-green-600 font-bold bg-blue-50/30">
-                            <div class="font-bold">Clean Architecture</div>
-                            <div class="text-xs text-slate-600 font-normal mt-1">Controller/Service/Repo</div>
-                        </td>
-                        <td class="px-6 py-4 text-center text-slate-500">
-                            <div class="font-medium">Basic/Flat</div>
-                            <div class="text-xs text-slate-500 mt-1">Harder to scale</div>
-                        </td>
-                        <td class="px-6 py-4 text-center text-green-600">
-                            <div class="font-bold">✓ Structured</div>
-                            <div class="text-xs text-slate-600 font-normal mt-1">Organized patterns</div>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="px-6 py-4 text-slate-600 font-medium">Vendor Dependencies</td>
-                        <td class="px-6 py-4 text-center text-green-600 font-bold bg-blue-50/30">
-                            <div class="font-bold">Zero Lock-in</div>
-                            <div class="text-xs text-slate-600 font-normal mt-1">Your infra, your choice</div>
-                        </td>
-                        <td class="px-6 py-4 text-center text-orange-500">
-                            <div class="font-medium">Often High</div>
-                            <div class="text-xs text-slate-500 mt-1">Tied to services</div>
-                        </td>
-                        <td class="px-6 py-4 text-center text-slate-500">
-                            <div class="font-medium">Varies</div>
-                            <div class="text-xs text-slate-500 mt-1">Check carefully</div>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="px-6 py-4 text-slate-600 font-medium">Documentation</td>
-                        <td class="px-6 py-4 text-center text-brand-blue font-bold bg-blue-50/30">
-                            <div class="font-bold">12+ Guides</div>
-                            <div class="text-xs text-slate-600 font-normal mt-1">Comprehensive docs</div>
-                        </td>
-                        <td class="px-6 py-4 text-center text-slate-500">
-                            <div class="font-medium">README Only</div>
-                            <div class="text-xs text-slate-500 mt-1">Basic setup</div>
-                        </td>
-                        <td class="px-6 py-4 text-center text-slate-500">
-                            <div class="font-medium">Good</div>
-                            <div class="text-xs text-slate-500 mt-1">Usually detailed</div>
-                        </td>
-                    </tr>
-                    
-                    <tr class="bg-slate-50">
-                        <td class="px-6 py-4 text-slate-900 font-bold">Launch Price</td>
-                        <td class="px-6 py-4 text-center text-brand-orange font-bold bg-blue-50/50 text-lg">$197</td>
-                        <td class="px-6 py-4 text-center text-slate-600 font-medium">$0-199</td>
-                        <td class="px-6 py-4 text-center text-slate-600 font-medium">$295-995</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <!-- Footnote -->
-        <p class="text-center text-sm text-slate-500 mt-6">
-            Comparisons based on publicly available information. Specific features vary by product.
-        </p>
-    </div>
-</section>
-
-    <!-- <h3 class="text-2xl font-bold text-slate-900 mb-2">Built by a Backend Specialist, for Backend Developers</h3> -->
-    <!-- img class: class="w-full h-full object-cover p-1" -->
-    <!-- Founder's Story -->
-    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-slate-50">
-    <div class="max-w-4xl mx-auto">
-        <div class="bg-white rounded-2xl p-8 md:p-12 shadow-sm border border-slate-200">
-            <!-- Header with Photo -->
-            <div class="flex flex-col md:flex-row items-start gap-6 mb-8">
-                <!-- Note: Replace src with your actual photo filename in assets/ -->
-                <img src="./assets/logo.png" 
-                     alt="Abubakar Usman (Kata) - Founder of DreamStack" 
-                     class="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover shrink-0 border-4 border-white shadow-lg bg-slate-50" />
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
-                        Built by a Backend Specialist, for Backend Developers
-                    </h2>
-                    <p class="text-slate-600 font-medium mb-3">
-                        Abubakar Usman (Kata) · Lead Backend Developer at Haqqman · Abuja, Nigeria 🇳🇬
-                    </p>
-                    <div class="flex flex-wrap gap-3">
-                        <a href="https://x.com/katafyi" target="_blank" class="text-sm text-brand-blue hover:underline flex items-center gap-1">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                            @katafyi
-                        </a>
-                        <a href="https://www.linkedin.com/in/usmansadik" target="_blank" class="text-sm text-brand-blue hover:underline flex items-center gap-1">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                            LinkedIn
-                        </a>
-                        <a href="https://github.com/dreamversehq" target="_blank" class="text-sm text-brand-blue hover:underline flex items-center gap-1">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            GitHub
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Story -->
-            <div class="prose prose-slate prose-lg max-w-none">
-                <p class="text-slate-600 leading-relaxed mb-4">
-                    I started coding in 2021 at 16—self-taught through YouTube tutorials and too much trial and error. By 2022, I joined the HNG internship as a backend developer. Our team's initial architecture wasn't working, so I proposed a better approach. It worked. My teammates voted me Lead Backend Developer, and we made it to the finals.
+            <div class="max-w-2xl space-y-6">
+                <p class="text-lg md:text-xl text-slate-600 leading-relaxed">
+                    DreamVerse is the parent brand behind 
+                    <a href="/dreamstack" class="font-bold text-brand-blue hover:text-brand-blue-light underline decoration-2 underline-offset-4 transition-colors">DreamStack</a> 
+                    — a production-ready Node.js backend template designed for long-lived, real-world systems.
                 </p>
                 
-                <p class="text-slate-600 leading-relaxed mb-4">
-                    That opened doors. In 2023, I joined <span class="font-semibold text-slate-900">Haqqman</span> as a backend developer, where I've spent the last 2+ years building production systems for <span class="font-semibold text-slate-900">Linkpane</span>, <span class="font-semibold text-slate-900">DeerNigeria</span>, and other platforms serving hundreds to thousands of users.
-                </p>
-                
-                <p class="text-slate-600 leading-relaxed mb-4">
-                    I've built OAuth flows, payment gateway integrations, electricity vending systems, and normalized databases that actually scale. I've migrated codebases, optimized queries, and written enough tests to know what breaks in production.
-                </p>
-                
-                <p class="text-slate-600 leading-relaxed mb-4">
-                    <span class="font-semibold text-slate-900">But every project started the same way:</span> setting up auth, writing boilerplate, configuring databases, building testing infrastructure. I was rebuilding the same solid foundations over and over.
-                </p>
-                
-                <p class="text-slate-600 leading-relaxed mb-4">
-                    So I built <span class="font-semibold text-slate-900">DreamStack</span>—the template I needed when I started. Not a tutorial project. Not a "ship fast and pray" starter kit. A production-grade foundation with <span class="font-semibold text-slate-900">471 comprehensive tests</span>, clean architecture, and zero vendor lock-in.
-                </p>
-                
-                <p class="text-slate-600 leading-relaxed">
-                    <span class="font-semibold text-slate-900">I use DreamStack for my own client projects.</span> The dual framework support exists because I got tired of framework debates. The database flexibility exists because I've done enough painful migrations. The 471 tests exist because I've debugged enough production fires.
-                </p>
-                
-                <p class="text-slate-600 leading-relaxed mt-6 text-base italic border-l-4 border-brand-blue pl-4 bg-blue-50/30 py-3 rounded-r">
-                    "If it's good enough for my production apps, it's good enough for yours."
-                </p>
-            </div>
-            
-            <!-- Stats -->
-            <div class="mt-8 pt-8 border-t border-slate-200">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                    <div>
-                        <div class="text-2xl font-bold text-brand-blue mb-1">2+ Years</div>
-                        <div class="text-sm text-slate-600">Production Experience</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold text-brand-blue mb-1">HNG Finalist</div>
-                        <div class="text-sm text-slate-600">Lead Backend Dev</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold text-brand-blue mb-1">1000s</div>
-                        <div class="text-sm text-slate-600">Users Served</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold text-brand-blue mb-1">Age 20</div>
-                        <div class="text-sm text-slate-600">🇳🇬 Abuja → Global</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Trust Badge -->
-            <div class="mt-8 bg-slate-50 rounded-xl p-6 border border-slate-200">
-                <div class="flex items-start gap-4">
-                    <div class="w-10 h-10 bg-brand-blue/10 rounded-lg flex items-center justify-center shrink-0">
-                        <svg class="w-5 h-5 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                    </div>
-                    <div>
-                        <div class="font-semibold text-slate-900 mb-1">Why Trust This Template?</div>
-                        <div class="text-sm text-slate-600 leading-relaxed">
-                            Every line of code in DreamStack has been tested in production environments serving real users. The architecture patterns aren't theoretical—they're proven across multiple SaaS platforms. The 471 tests ensure nothing breaks when you extend it. This is what actually works.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <!-- Pricing -->
-    <section id="pricing" class="py-24 px-4 sm:px-6 lg:px-8 bg-slate-100">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-                    $197 vs 40+ Hours of Development
-                </h2>
-                <p class="text-lg text-slate-600">
-                    Building authentication, OAuth, RBAC, testing, and deployment from scratch costs $4,000-8,000 in senior dev time. Get it done for $197.
+                <p class="text-base font-medium text-slate-400 italic">
+                    More products and services are in progress.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto items-start">
-                <!-- Early Bird -->
-                <div class="bg-white rounded-2xl p-8 relative shadow-xl border-2 border-brand-orange transform md:-translate-y-4 z-10">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-orange text-white px-4 py-1 rounded-full text-sm font-bold tracking-wide uppercase">
-                        Best Value
-                    </div>
-                    <div class="text-center mb-8">
-                        <h3 class="text-xl font-bold mb-2 text-slate-900">Early Bird</h3>
-                        <div class="flex items-baseline justify-center gap-1">
-                            <span class="text-5xl font-bold text-slate-900">$197</span>
-                        </div>
-                        <p class="text-brand-orange font-medium text-sm mt-2">First 20 buyers only</p>
-                    </div>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span class="text-sm text-slate-600">Full source code access</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span class="text-sm text-slate-600">All current features</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span class="text-sm text-slate-600">Unlimited projects</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span class="text-sm text-slate-900 font-bold">Lifetime updates (Launch Bonus)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span class="text-sm text-slate-600">Email support</span>
-                        </li>
-                    </ul>
-                    <a href="https://gumroad.com/l/dreamstack" class="block w-full bg-brand-orange hover:bg-[#e66a20] text-white text-center px-6 py-4 rounded-xl font-bold transition-all shadow-lg shadow-brand-orange/20 hover:shadow-xl hover:-translate-y-0.5">
-                        Get Early Bird Access
-                    </a>
-                </div>
-
-                <!-- Standard -->
-                <div class="bg-white border border-slate-200 rounded-2xl p-8 hover:border-slate-300 transition-colors">
-                    <div class="text-center mb-8">
-                        <h3 class="text-xl font-bold mb-2 text-slate-900">Standard</h3>
-                        <div class="flex items-baseline justify-center gap-1">
-                            <span class="text-5xl font-bold text-slate-900">$297</span>
-                        </div>
-                        <p class="text-slate-500 text-sm mt-2">Regular price</p>
-                    </div>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-brand-blue shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span class="text-sm text-slate-600">Everything in Early Bird</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-brand-blue shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span class="text-sm text-slate-600">12 months of updates</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-brand-blue shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span class="text-sm text-slate-600">Priority support</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-brand-blue shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            <span class="text-sm text-slate-600">Discord community access</span>
-                        </li>
-                    </ul>
-                    <a href="https://gumroad.com/l/dreamstack" class="block w-full bg-slate-100 hover:bg-slate-200 text-slate-900 text-center px-6 py-4 rounded-xl font-bold transition-all">
-                        Buy Standard
-                    </a>
-                </div>
-            </div>
-
-            <p class="text-center text-slate-500 mt-12 text-sm flex items-center justify-center gap-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-                Secure payment via Gumroad. 30-day money-back guarantee.
-            </p>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="py-24 px-4 sm:px-6 lg:px-8 bg-white">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-slate-900 tracking-tight">
-                Frequently Asked Questions
-            </h2>
-
-            <div class="space-y-4">
-                <details class="group bg-white border border-slate-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden">
-                    <summary class="flex items-center justify-between cursor-pointer">
-                        <h3 class="font-semibold text-slate-900">When do I get access after purchase?</h3>
-                        <span class="ml-4 flex-shrink-0 text-slate-400 group-open:rotate-180 transition-transform">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </span>
-                    </summary>
-                    <p class="mt-4 text-slate-600 leading-relaxed">
-                        Immediately. You'll receive a Gumroad download link with the full source code, documentation, and setup instructions within seconds of purchase.
-                    </p>
-                </details>
-
-                <details class="group bg-white border border-slate-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden">
-                    <summary class="flex items-center justify-between cursor-pointer">
-                        <h3 class="font-semibold text-slate-900">Why should I trust this is production-ready?</h3>
-                        <span class="ml-4 flex-shrink-0 text-slate-400 group-open:rotate-180 transition-transform">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </span>
-                    </summary>
-                    <p class="mt-4 text-slate-600 leading-relaxed">
-                        471 automated tests covering every feature. Architected by the Lead Backend Developer at Haqqman (built Linkpane, DeerNigeria) with 3+ years of specialized backend experience. Follows strict OWASP security best practices and Clean Architecture principles.
-                    </p>
-                </details>
-
-                <details class="group bg-white border border-slate-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden">
-                    <summary class="flex items-center justify-between cursor-pointer">
-                        <h3 class="font-semibold text-slate-900">Is there a refund policy?</h3>
-                        <span class="ml-4 flex-shrink-0 text-slate-400 group-open:rotate-180 transition-transform">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </span>
-                    </summary>
-                    <p class="mt-4 text-slate-600 leading-relaxed">
-                        Yes. 30-day money-back guarantee. If DreamStack doesn't save you time or meet your needs, simply reply to your purchase email for a full refund.
-                    </p>
-                </details>
-
-                <details class="group bg-white border border-slate-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden">
-                    <summary class="flex items-center justify-between cursor-pointer">
-                        <h3 class="font-semibold text-slate-900">What exactly do I get?</h3>
-                        <span class="ml-4 flex-shrink-0 text-slate-400 group-open:rotate-180 transition-transform">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </span>
-                    </summary>
-                    <p class="mt-4 text-slate-600 leading-relaxed">
-                        You get the complete, uncompiled source code for DreamStack via instant download. It includes all 471 tests, documentation, and deployment guides. The codebase itself serves as a production-grade example of Auth, RBAC, and more.
-                    </p>
-                </details>
-
-                <details class="group bg-white border border-slate-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden">
-                    <summary class="flex items-center justify-between cursor-pointer">
-                        <h3 class="font-semibold text-slate-900">Can I use this for client projects?</h3>
-                        <span class="ml-4 flex-shrink-0 text-slate-400 group-open:rotate-180 transition-transform">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </span>
-                    </summary>
-                    <p class="mt-4 text-slate-600 leading-relaxed">
-                        Yes! The Standard license allows unlimited personal and commercial projects (SaaS) that you own. The Professional license is required for building projects for clients or agency work.
-                    </p>
-                </details>
-
-                <details class="group bg-white border border-slate-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden">
-                    <summary class="flex items-center justify-between cursor-pointer">
-                        <h3 class="font-semibold text-slate-900">What if I need help or have questions?</h3>
-                        <span class="ml-4 flex-shrink-0 text-slate-400 group-open:rotate-180 transition-transform">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </span>
-                    </summary>
-                    <p class="mt-4 text-slate-600 leading-relaxed">
-                        All licenses include email support. Professional license gets priority support and access to the private Discord community. Typical response time: 24 hours on weekdays.
-                    </p>
-                </details>
-
-                <details class="group bg-white border border-slate-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden">
-                    <summary class="flex items-center justify-between cursor-pointer">
-                        <h3 class="font-semibold text-slate-900">How is this different from just using Express or Hono directly?</h3>
-                        <span class="ml-4 flex-shrink-0 text-slate-400 group-open:rotate-180 transition-transform">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </span>
-                    </summary>
-                    <p class="mt-4 text-slate-600 leading-relaxed">
-                        DreamStack includes 2-3 weeks of work you'd do anyway: authentication, OAuth, database setup, file uploads, pagination, testing, deployment configs, security hardening, and documentation. Plus the unique dual-framework architecture.
-                    </p>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-[#111111] text-white relative overflow-hidden">
-        <!-- Background Glow -->
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl bg-brand-blue/10 blur-3xl rounded-full pointer-events-none"></div>
-        
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-                Stop Building Boilerplate.<br/>Start Building Your Product.
-            </h2>
-            <p class="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
-                Join developers who chose to ship faster with DreamStack.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="https://gumroad.com/l/dreamstack" class="inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-[#e66a20] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-brand-orange/20 hover:shadow-xl hover:-translate-y-0.5">
-                    Get DreamStack Now - $197
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                    </svg>
+            <div class="mt-10">
+                <a href="/dreamstack" class="inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-[#e66a20] text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-lg shadow-brand-orange/20 hover:shadow-xl hover:-translate-y-0.5 group">
+                    View DreamStack
+                    <span class="group-hover:translate-x-1 transition-transform">→</span>
                 </a>
             </div>
-            <p class="mt-6 text-sm text-slate-500">
-                Limited early bird pricing. Regular price: $297
-            </p>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="py-12 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-4 gap-8 mb-12">
-                <div class="col-span-1 md:col-span-2">
-                    <div class="flex items-center gap-2 mb-4">
-                        <img src="./assets/logo-svg.svg" alt="DreamStack Logo" class="w-6 h-6">
-                        <span class="font-bold text-lg tracking-tight text-slate-900">DreamStack</span>
+        <footer class="mt-16 md:mt-0 flex flex-col md:flex-row justify-between items-start md:items-end gap-12 border-t md:border-t-0 border-slate-100 pt-8 md:pt-0">
+            
+            <div class="flex items-start gap-4">
+                <div class="space-y-1">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Creator of DreamStack</p>
+                    <p class="text-slate-900 font-bold text-lg leading-none">Built by Abubakar Usman (Kata)</p>
+                    <p class="text-sm text-slate-500 font-medium">Lead Backend Developer at Haqqman</p>
+                    <div class="flex items-center gap-2 mt-2">
+                        <span class="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Abuja 🇳🇬 — Competing globally</p>
                     </div>
-                    <p class="text-sm text-slate-500 max-w-xs leading-relaxed">
-                        Production-ready Node.js backend template. Built in Abuja 🇳🇬 for developers worldwide.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="font-bold text-slate-900 mb-4">Product</h3>
-                    <ul class="space-y-3 text-sm text-slate-500">
-                        <li><a href="#features" class="hover:text-brand-blue transition-colors">Features</a></li>
-                        <li><a href="#pricing" class="hover:text-brand-blue transition-colors">Pricing</a></li>
-                        <li><a href="https://github.com/dreamversehq/dreamstack-nodejs" class="hover:text-brand-blue transition-colors">Documentation</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold text-slate-900 mb-4">Connect</h3>
-                    <ul class="space-y-3 text-sm text-slate-500">
-                        <li><a href="https://x.com/katafyi" class="hover:text-brand-blue transition-colors">Twitter/X</a></li>
-                        <li><a href="https://www.linkedin.com/in/usmansadik" class="hover:text-brand-blue transition-colors">LinkedIn</a></li>
-                        <li><a href="mailto:kata@dreamverse.ng" class="hover:text-brand-blue transition-colors">Email Support</a></li>
-                        <li><a href="https://github.com/dreamversehq" class="hover:text-brand-blue transition-colors">GitHub</a></li>
-                    </ul>
                 </div>
             </div>
-            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-slate-200 text-sm text-slate-400">
-                <div>© 2025 DreamVerse. All rights reserved.</div>
-                <div class="mt-4 md:mt-0 text-center md:text-right">
-                    <div class="text-xs text-slate-500 mb-0.5">Lead Backend Dev at Haqqman</div>
-                    Built by <a href="https://x.com/katafyi" class="text-slate-600 hover:text-brand-orange transition-colors font-medium">Abubakar Usman</a>
-                </div>
-            </div>
-        </div>
-    </footer>
 
+            <div class="flex flex-col items-start md:items-end gap-4 w-full md:w-auto">
+                <nav class="flex gap-6">
+                    <a href="#" class="text-sm font-semibold text-slate-400 hover:text-brand-blue transition-colors">GitHub</a>
+                    <a href="#" class="text-sm font-semibold text-slate-400 hover:text-brand-blue transition-colors">X (Twitter)</a>
+                    <a href="#" class="text-sm font-semibold text-slate-400 hover:text-brand-blue transition-colors">LinkedIn</a>
+                </nav>
+                
+                <p class="text-xs text-slate-400 font-medium">
+                    &copy; 2025 DreamVerse. All rights reserved.
+                </p>
+            </div>
+        </footer>
+
+    </main>
 </body>
 </html>
