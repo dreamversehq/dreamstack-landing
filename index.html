@@ -44,13 +44,16 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
     </style>
 </head>
-<body class="bg-white text-slate-600 antialiased selection:bg-brand-orange/20 selection:text-brand-orange">
+<body class="bg-white text-slate-600 antialiased selection:bg-brand-orange/20 selection:text-brand-orange relative overflow-x-hidden">
+    <!-- Subtle Grid Background -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] -z-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white -z-10"></div>
 
     <main class="min-h-screen flex flex-col justify-between max-w-7xl mx-auto px-6 py-8 md:px-12 md:py-12 lg:px-16 lg:py-16">
         
         <header>
             <div class="flex items-center gap-2">
-                <img src="/assets/logo-svg.svg" alt="DreamVerse Logo" class="w-8 h-8" onerror="this.style.display='none'; document.getElementById('fallback-icon').style.display='block';">
+                <img src="./assets/logo-svg.svg" alt="DreamVerse Logo" class="w-8 h-8" onerror="this.style.display='none'; document.getElementById('fallback-icon').style.display='block';">
                 
                 <svg id="fallback-icon" class="w-8 h-8 text-brand-orange hidden" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
@@ -68,18 +71,21 @@
 
             <div class="max-w-2xl space-y-6">
                 <p class="text-lg md:text-xl text-slate-600 leading-relaxed">
-                    DreamVerse is the parent brand behind 
-                    <a href="/dreamstack/index.html" class="font-bold text-brand-blue hover:text-brand-blue-light underline decoration-2 underline-offset-4 transition-colors">DreamStack</a> 
-                    — a production-ready Node.js backend template designed for long-lived, real-world systems.
+                    DreamVerse is a software studio dedicated to crafting developer tools that prioritize <span class="font-semibold text-slate-900">clean architecture</span>, <span class="font-semibold text-slate-900">maintainability</span>, and <span class="font-semibold text-slate-900">developer experience</span>.
+                </p>
+                <p class="text-lg md:text-xl text-slate-600 leading-relaxed">
+                    Our flagship product, 
+                    <a href="./dreamstack/index.html" class="font-bold text-brand-blue hover:text-brand-blue-light underline decoration-2 underline-offset-4 transition-colors">DreamStack</a>, 
+                    is a production-ready Node.js backend template designed for long-lived, real-world systems.
                 </p>
                 
-                <p class="text-base font-light text-slate-400 italic">
+                <p class="text-base font-light text-slate-400 italic pt-4 border-t border-slate-100 inline-block">
                     More products and services are in progress.
                 </p>
             </div>
 
             <div class="mt-6 mb-8 lg:mb-16">
-                <a href="/dreamstack/index.html" class="inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-[#e66a20] text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-lg shadow-brand-orange/20 hover:shadow-xl hover:-translate-y-0.5 group">
+                <a href="./dreamstack/index.html" class="inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-[#e66a20] text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-lg shadow-brand-orange/20 hover:shadow-xl hover:-translate-y-0.5 group">
                     View DreamStack
                     <span class="group-hover:translate-x-1 transition-transform">→</span>
                 </a>
