@@ -831,6 +831,41 @@
 
                 <details class="group bg-white border border-slate-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden">
                     <summary class="flex items-center justify-between cursor-pointer">
+                        <h3 class="font-semibold text-slate-900">Why framework flexibility?</h3>
+                        <span class="ml-4 flex-shrink-0 text-slate-400 group-open:rotate-180 transition-transform">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 leading-relaxed">
+                        <span class="font-bold text-slate-900">TL;DR: Your business logic survives anything.</span><br/><br/>
+                        Having your codebase not tied to a specific framework saves you from "migration hell" in the future. If a framework becomes unmaintained, vulnerable, or you simply need to switch platforms (e.g., Node.js to Edge), your core logic remains untouched.
+                    </p>
+                </details>
+
+                <details class="group bg-white border border-slate-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex items-center justify-between cursor-pointer">
+                        <h3 class="font-semibold text-slate-900">Why not just use a fullstack framework (Next.js/Remix)?</h3>
+                        <span class="ml-4 flex-shrink-0 text-slate-400 group-open:rotate-180 transition-transform">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </span>
+                    </summary>
+                    <div class="mt-4 text-slate-600 leading-relaxed space-y-3">
+                        <p><span class="font-bold text-slate-900">It comes down to Latency and Physics.</span></p>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li><span class="font-semibold text-slate-800">Frontend belongs on the Edge:</span> Your UI should be globally distributed (Vercel, Cloudflare) to load instantly for users anywhere.</li>
+                            <li><span class="font-semibold text-slate-800">Backend belongs near the Database:</span> Your API needs sub-10ms access to your data.</li>
+                        </ul>
+                        <p>
+                            When you bundle them (monolithic fullstack), you often compromise on one. If you deploy everything to a single region, distant users get slow UI. If you deploy everything to the edge, your database queries become slow (waterfall requests).
+                        </p>
+                        <p>
+                            DreamStack lets you keep your backend tight and fast next to your DB, while your frontend flies on the Edge.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="group bg-white border border-slate-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex items-center justify-between cursor-pointer">
                         <h3 class="font-semibold text-slate-900">How is this different from just using Express or Hono directly?</h3>
                         <span class="ml-4 flex-shrink-0 text-slate-400 group-open:rotate-180 transition-transform">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
