@@ -74,6 +74,12 @@
       .animate-pulse-slow {
         animation: pulse-opacity 2s ease-in-out infinite;
       }
+      /* Mobile menu - only show on screens smaller than 768px */
+      @media (max-width: 767px) {
+        #mobile-menu-btn {
+          display: flex !important;
+        }
+      }
     </style>
   </head>
   <body
@@ -95,11 +101,18 @@
               >DreamStack</span
             >
           </a>
+          
+          <!-- Desktop Navigation -->
           <div class="hidden md:flex items-center gap-8">
             <a
               href="#features"
               class="text-sm font-medium text-slate-600 hover:text-brand-blue transition-colors"
               >Features</a
+            >
+            <a
+              href="#testimonials"
+              class="text-sm font-medium text-slate-600 hover:text-brand-blue transition-colors"
+              >Testimonials</a
             >
             <a
               href="#pricing"
@@ -122,9 +135,99 @@
               >Get Started</a
             >
           </div>
+
+          <!-- Mobile Hamburger Button -->
+          <button
+            id="mobile-menu-btn"
+            class="items-center justify-center w-10 h-10 rounded-lg hover:bg-slate-100 transition-colors"
+            style="display: none;"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+          >
+            <svg class="w-6 h-6 text-slate-700" id="hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg class="w-6 h-6 text-slate-700 hidden" id="close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white/95 backdrop-blur-md">
+          <div class="py-4 space-y-1">
+            <a
+              href="#features"
+              class="block px-4 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue transition-colors rounded-lg"
+              >Features</a
+            >
+            <a
+              href="#testimonials"
+              class="block px-4 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue transition-colors rounded-lg"
+              >Testimonials</a
+            >
+            <a
+              href="#pricing"
+              class="block px-4 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue transition-colors rounded-lg"
+              >Pricing</a
+            >
+            <a
+              href="copilot-review.html"
+              class="block px-4 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue transition-colors rounded-lg"
+              >AI Review</a
+            >
+            <a
+              href="#faq"
+              class="block px-4 py-3 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue transition-colors rounded-lg"
+              >FAQ</a
+            >
+            <div class="px-4 pt-2">
+              <a
+                href="https://buy.dreamverse.ng"
+                class="block w-full text-center text-base font-medium bg-brand-orange text-white px-4 py-3 rounded-lg hover:bg-orange-600 transition-colors"
+                >Get Started</a
+              >
+            </div>
+          </div>
         </div>
       </div>
     </nav>
+
+    <!-- Mobile Menu Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        menuBtn.addEventListener('click', function() {
+          const isOpen = !mobileMenu.classList.contains('hidden');
+          
+          if (isOpen) {
+            mobileMenu.classList.add('hidden');
+            hamburgerIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+            menuBtn.setAttribute('aria-expanded', 'false');
+          } else {
+            mobileMenu.classList.remove('hidden');
+            hamburgerIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
+            menuBtn.setAttribute('aria-expanded', 'true');
+          }
+        });
+
+        // Close menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            hamburgerIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+            menuBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      });
+    </script>
 
     <!-- Hero Section -->
     <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
@@ -735,7 +838,7 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm10-10V7a4 4 0 00-8 0v4h8z"
                 />
               </svg>
             </div>
@@ -1123,6 +1226,42 @@
           </div>
         </div>
 
+        <!-- What's in the Box -->
+        <div class="max-w-4xl mx-auto mb-12">
+          <div class="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 shadow-sm">
+            <div class="flex items-center justify-center gap-2 mb-8">
+              <svg class="w-4 h-4" viewBox="0.00103022 0.000731493 23.91 23.94"><path d="M14.421 8.618a.985.985 0 01-.502-.136 3.982 3.982 0 00-.76-.34 1 1 0 01.621-1.901c.398.129.783.302 1.145.513a.998.998 0 01-.504 1.864m-5.84.596a1.001 1.001 0 01-.664-1.748c.316-.28.656-.525 1.015-.73a1 1 0 01.994 1.735c-.24.137-.469.302-.68.49a.997.997 0 01-.665.253m8.331 3.759c-.553 0-1-.418-1-.97v-.06c0-.28-.029-.56-.086-.831a1 1 0 011.957-.411c.086.406.13.825.13 1.243 0 .552-.448 1.029-1 1.029m-9.899.98a1 1 0 01-.979-.797 5.99 5.99 0 01-.123-1.212c0-.552.447-1.014 1-1.014.553 0 1 .433 1 .985v.029c0 .273.028.544.082.807a1 1 0 01-.98 1.202m7.357 3.347a1 1 0 01-.493-1.871c.243-.138.473-.301.682-.485a1 1 0 011.322 1.5 6.01 6.01 0 01-1.02.726.992.992 0 01-.49.13m-4.044.388c-.104 0-.21-.017-.315-.051a6.042 6.042 0 01-1.143-.52 1 1 0 011.016-1.723c.24.14.494.257.758.344a1 1 0 01-.316 1.95M13.317 5.066c-.058 0-.116-.005-.176-.014a7.086 7.086 0 00-.97-.103 1 1 0 01-.962-1.035.994.994 0 011.035-.965c.419.016.838.06 1.246.133a1 1 0 01-.173 1.984m-6.312 1.56a1 1 0 01-.616-1.788 9.059 9.059 0 011.04-.7 1 1 0 01.999 1.734 7.028 7.028 0 00-.81.543.997.997 0 01-.613.212m11.04 1.18a.994.994 0 01-.765-.359 7.151 7.151 0 00-.68-.703 1 1 0 111.34-1.484c.312.28.605.583.87.902a1 1 0 01-.764 1.643M4.092 11.252a1 1 0 01-.978-1.21c.087-.405.205-.81.349-1.204a1 1 0 111.877.688 7.226 7.226 0 00-.271.937 1 1 0 01-.977.79m15.82 1.722c-.552 0-1-.418-1-.97v-.062c0-.322-.022-.652-.067-.976a1.001 1.001 0 011.983-.27c.056.413.085.833.085 1.247 0 .552-.448 1.03-1 1.03m-15.08 3.697c-.36 0-.706-.194-.886-.534a9.059 9.059 0 01-.506-1.149 1 1 0 111.88-.678c.112.307.244.608.395.893a.999.999 0 01-.883 1.468m13.173 1.457a1 1 0 01-.761-1.648c.21-.247.406-.512.58-.787a1.001 1.001 0 011.382-.304c.464.297.6.915.304 1.38-.222.35-.472.69-.743 1.007a.994.994 0 01-.762.352m-9.13 2.22a.999.999 0 01-.38-.075 8.812 8.812 0 01-1.122-.556 1 1 0 011.009-1.726c.28.163.574.308.873.431a1 1 0 01-.38 1.927m4.379.482a1 1 0 01-.167-1.985c.32-.055.639-.131.948-.23a1 1 0 11.605 1.906 8.909 8.909 0 01-1.22.296.957.957 0 01-.166.013M9.863 2.134a.998.998 0 01-.981-.815.999.999 0 01.796-1.168c.326-.06.658-.109.993-.144A.992.992 0 0111.77.9a1 1 0 01-.893 1.097c-.28.03-.556.07-.827.121a.983.983 0 01-.186.017m5.457.348a.996.996 0 01-.312-.05 9.71 9.71 0 00-.802-.225A1 1 0 0114.663.26c.326.077.65.168.967.271a1 1 0 01-.31 1.952M5.646 3.903a1 1 0 01-.573-1.82c.274-.192.56-.372.85-.54a1 1 0 111 1.732 9.671 9.671 0 00-.706.447.99.99 0 01-.57.181m13.628.87a.995.995 0 01-.67-.259 10.171 10.171 0 00-.642-.532.999.999 0 111.208-1.595c.267.204.526.418.774.643a1 1 0 01-.67 1.742M2.511 7.23a1.001 1.001 0 01-.854-1.518c.173-.287.36-.566.558-.837a1 1 0 111.615 1.18 9.731 9.731 0 00-.462.693 1 1 0 01-.857.482m19.456 1.241c-.384 0-.75-.22-.916-.594a9.335 9.335 0 00-.372-.75 1.001 1.001 0 011.754-.963c.16.293.31.594.447.901a1 1 0 01-.913 1.406M1.002 11.544a1 1 0 01-.993-1.126c.041-.334.098-.664.166-.99a1.001 1.001 0 011.958.416 9.388 9.388 0 00-.14.827 1 1 0 01-.992.873m21.912 1.422c-.553 0-1-.425-1-.977v-.045c0-.283-.012-.563-.035-.84a1 1 0 01.918-1.077.99.99 0 011.076.917c.026.33.04.663.04 1 0 .552-.447 1.022-1 1.022m-21.54 3.136c-.433 0-.83-.28-.96-.716a12.442 12.442 0 01-.244-.972.999.999 0 111.956-.41c.058.275.127.546.206.813a1 1 0 01-.959 1.285m20.575 1.355a.998.998 0 01-.91-1.412c.113-.253.217-.51.308-.773a1 1 0 111.889.66 11 11 0 01-.375.936 1 1 0 01-.912.59M3.567 20.111a.998.998 0 01-.76-.35 12.427 12.427 0 01-.62-.786 1.001 1.001 0 011.62-1.175c.164.228.339.448.52.661a1 1 0 01-.76 1.65m15.677 1.032a1 1 0 01-.667-1.745c.209-.186.409-.38.6-.584a1 1 0 111.454 1.374c-.23.243-.47.477-.72.7a.996.996 0 01-.667.255M7.201 22.886a.997.997 0 01-.43-.097 12.31 12.31 0 01-.888-.468 1 1 0 111.006-1.729c.241.14.489.271.742.391a1 1 0 01-.43 1.903m8.078.534a1 1 0 01-.306-1.953 9.22 9.22 0 00.781-.289 1 1 0 01.775 1.844c-.308.13-.623.246-.944.35a.993.993 0 01-.307.048m-3.63.521h-.025a12.633 12.633 0 01-.998-.066.999.999 0 11.21-1.988c.276.03.556.047.838.055a1 1 0 01-.025 2M13.912 11.944a2 2 0 10-3.999-.001 2 2 0 004 0" fill="#0069FF"/></svg>
+              <h3 class="font-bold text-slate-900 uppercase tracking-wide text-md">The <span class="text-brand-blue">DreamStack</span> Payload</h3>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-brand-blue shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                <div><span class="font-semibold text-slate-900">Decoupled Engine:</span> <span class="text-slate-600">Switch Express ↔ Hono in one variable.</span></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-brand-blue shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                <div><span class="font-semibold text-slate-900">Universal Persistence:</span> <span class="text-slate-600">Prisma (SQL) ↔ Mongoose (NoSQL) ready.</span></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-brand-blue shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                <div><span class="font-semibold text-slate-900">The 508 Suite:</span> <span class="text-slate-600">500+ tests protecting your core logic.</span></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-brand-blue shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                <div><span class="font-semibold text-slate-900">Hardened Security:</span> <span class="text-slate-600">JWT, rate-limiting, headers pre-configured.</span></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-brand-blue shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                <div><span class="font-semibold text-slate-900">Cloud-Ready Utilities:</span> <span class="text-slate-600">Abstracted uploads & mailers.</span></div>
+              </div>
+              <a href="copilot-review.html" class="flex items-start gap-3 group hover:bg-blue-50/50 -mx-2 px-2 py-1 rounded-lg transition-colors">
+                <svg class="w-4 h-4 text-brand-blue shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                <div><span class="font-semibold text-slate-900 group-hover:text-brand-blue transition-colors">A+ Architecture:</span> <span class="text-slate-600">Copilot-verified quality score.</span> <span class="text-brand-blue text-xs font-medium">View Report →</span></div>
+              </a>
+            </div>
+          </div>
+        </div>
+
         <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto items-start">
           <!-- Early Bird -->
           <div
@@ -1376,7 +1515,7 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-white border-y border-slate-200">
+    <section id="testimonials" class="py-24 px-4 sm:px-6 lg:px-8 bg-white border-y border-slate-200">
       <div class="max-w-7xl mx-auto">
         <div class="text-center max-w-3xl mx-auto mb-16">
           <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
@@ -1389,82 +1528,82 @@
 
         <div class="grid md:grid-cols-3 gap-8">
           <!-- Testimonial 1 (LinkedIn) -->
-          <a href="https://www.linkedin.com/in/abubakar-bello-a52224140/" target="_blank" class="group bg-slate-50 p-8 rounded-2xl border border-slate-100 flex flex-col hover:shadow-xl transition-all hover:-translate-y-1 hover:border-brand-blue cursor-pointer relative overflow-hidden">
+          <div class="group bg-slate-50 pt-8 px-8 pb-8 rounded-2xl border border-slate-100 flex flex-col h-full hover:shadow-sm transition-all hover:border-brand-blue relative">
             <div class="flex justify-between items-start mb-6">
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-slate-200 rounded-full overflow-hidden shrink-0 ring-0 group-hover:ring-2 group-hover:ring-brand-blue group-hover:ring-offset-2 transition-all duration-300">
-                  <img src="../assets/testimonial-abubakar.jpg" alt="Abubakar Bello" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+              <a href="https://www.linkedin.com/in/abubakar-bello-a52224140/" target="_blank" class="flex items-center gap-4 group/profile">
+                <div class="w-12 h-12 bg-slate-200 rounded-full overflow-hidden shrink-0 ring-0 group-hover/profile:ring-2 group-hover/profile:ring-brand-blue group-hover/profile:ring-offset-2 transition-all duration-300">
+                  <img src="../assets/testimonial-abubakar.jpg" alt="Abubakar Bello" class="w-full h-full object-cover transform group-hover/profile:scale-110 transition-transform duration-500">
                 </div>
                 <div>
-                  <div class="font-bold text-slate-900 leading-tight group-hover:text-brand-blue transition-colors">Abubakar Bello</div>
+                  <div class="font-bold text-slate-900 leading-tight group-hover/profile:text-brand-blue transition-colors">Abubakar Bello</div>
                   <div class="text-xs text-slate-500 font-medium">CDPO & Software Solution Architect</div>
-                  <div class="text-[10px] uppercase tracking-wide text-slate-400 mt-1 flex items-center gap-1">
+                  <div class="text-slate-400 mt-0.5 flex items-center gap-1" style="font-size: 9px;">
                     🇺🇸 United States
                   </div>
                 </div>
-              </div>
-              <div class="text-[#0A66C2] opacity-80 shrink-0 group-hover:opacity-100 group-hover:scale-110 transition-all">
+              </a>
+              <a href="https://www.linkedin.com/in/abubakar-bello-a52224140/" target="_blank" class="flex flex-col items-center gap-2 shrink-0 group/icon">
+                <div class="text-[#0A66C2] opacity-80 group-hover/icon:opacity-100 group-hover/icon:scale-110 transition-all">
                   <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-              </div>
+                </div>
+              </a>
             </div>
-            <p class="text-slate-600 text-sm leading-relaxed">
-              "As an architect, my biggest fear with templates is the technical debt you inherit on day one. DreamStack is the first time I’ve seen a 'fast-start' tool that actually respects Clean Architecture. The ability to flip from Express to Hono with an env var isn't just a cool trick—it’s a massive insurance policy for your infrastructure. I’d actually trust this in a production environment."
+            
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+              "As an architect, my biggest fear with templates is the technical debt you inherit on day one. DreamStack is the first time I’ve seen a 'fast-start' tool that actually respects Clean Architecture. The ability to flip from Express to Hono with an env var isn't just a cool trick, it’s a massive insurance policy for your infrastructure. I’d actually trust this in a production environment."
             </p>
-          </a>
+          </div>
 
           <!-- Testimonial 2 (LinkedIn) -->
-          <a href="https://www.linkedin.com/in/michael-umeokoli/" target="_blank" class="group bg-slate-50 p-8 rounded-2xl border border-slate-100 flex flex-col hover:shadow-xl transition-all hover:-translate-y-1 hover:border-brand-blue cursor-pointer relative overflow-hidden">
+          <div class="group bg-slate-50 pt-8 px-8 pb-8 rounded-2xl border border-slate-100 flex flex-col h-full hover:shadow-sm transition-all hover:border-brand-blue relative">
             <div class="flex justify-between items-start mb-6">
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-slate-200 rounded-full overflow-hidden shrink-0 ring-0 group-hover:ring-2 group-hover:ring-brand-blue group-hover:ring-offset-2 transition-all duration-300">
-                   <img src="../assets/testimonial-micheal.jpg" alt="Michael Umeokoli" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+              <a href="https://www.linkedin.com/in/michael-umeokoli/" target="_blank" class="flex items-center gap-4 group/profile">
+                <div class="w-12 h-12 bg-slate-200 rounded-full overflow-hidden shrink-0 ring-0 group-hover/profile:ring-2 group-hover/profile:ring-brand-blue group-hover/profile:ring-offset-2 transition-all duration-300">
+                   <img src="../assets/testimonial-micheal.jpg" alt="Michael Umeokoli" class="w-full h-full object-cover transform group-hover/profile:scale-110 transition-transform duration-500">
                 </div>
                 <div>
-                   <div class="font-bold text-slate-900 leading-tight group-hover:text-brand-blue transition-colors">Michael Umeokoli</div>
+                   <div class="font-bold text-slate-900 leading-tight group-hover/profile:text-brand-blue transition-colors">Michael Umeokoli</div>
                    <div class="text-xs text-slate-500 font-medium">AI Engineer @ Bubex Labs</div>
-                   <div class="text-[10px] uppercase tracking-wide text-slate-400 mt-1 flex items-center gap-1">
+                   <div class="text-slate-400 mt-0.5 flex items-center gap-1" style="font-size: 9px;">
                     🇬🇧 United Kingdom
                   </div>
                 </div>
-              </div>
-              <div class="text-[#0A66C2] opacity-80 shrink-0 group-hover:opacity-100 group-hover:scale-110 transition-all">
+              </a>
+              <a href="https://www.linkedin.com/in/michael-umeokoli/" target="_blank" class="flex flex-col items-center gap-2 shrink-0 group/icon">
+                <div class="text-[#0A66C2] opacity-80 group-hover/icon:opacity-100 group-hover/icon:scale-110 transition-all">
                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-              </div>
+                </div>
+              </a>
             </div>
-            <p class="text-slate-600 text-sm leading-relaxed">
+            
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
               "Usually, 'shipping fast' is just an excuse for making a mess that you have to clean up three months later. DreamStack changed that for me. Having a rock-solid foundation with 500+ tests already written meant I could focus entirely on my AI logic instead of fighting with folder structures or database connections. It’s the head start I wish I had for my last three projects."
             </p>
-          </a>
-          
-          <!-- Testimonial 3 (Twitter/X - Placeholder) -->
-           <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 border-dashed flex flex-col items-center justify-center text-center opacity-75">
-            <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mb-4 text-slate-400">
-               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </div>
-            <p class="text-slate-500 text-sm italic">
-               More reviews coming soon...
-            </p>
           </div>
           
-          <!-- Hidden Twitter Template (Uncomment when ready)
-          <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 relative">
-            <div class="absolute top-8 right-8 text-slate-300">
-               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <!-- Testimonial 3 (Twitter/X) -->
+          <div class="group bg-slate-50 pt-8 px-8 pb-8 rounded-2xl border border-slate-100 flex flex-col h-full hover:shadow-sm transition-all hover:border-brand-blue relative">
+            <div class="flex justify-between items-start mb-6">
+              <a href="https://x.com/ennycodes" target="_blank" class="flex items-center gap-4 group/profile">
+                <div class="w-12 h-12 bg-slate-200 rounded-full overflow-hidden shrink-0 ring-0 group-hover/profile:ring-2 group-hover/profile:ring-brand-blue group-hover/profile:ring-offset-2 transition-all duration-300">
+                   <img src="../assets/testimonial-enny.jpg" alt="Eniola" class="w-full h-full object-cover transform group-hover/profile:scale-110 transition-transform duration-500">
+                </div>
+                <div>
+                   <div class="font-bold text-slate-900 leading-tight group-hover/profile:text-brand-blue transition-colors">Eniola</div>
+                   <div class="text-xs text-slate-500 font-medium">@ennycodes</div>
+                </div>
+              </a>
+              <a href="https://x.com/ennycodes" target="_blank" class="flex flex-col items-center gap-2 shrink-0 group/icon">
+                <div class="text-slate-400 opacity-80 group-hover/icon:opacity-100 group-hover/icon:scale-110 group-hover/icon:text-black transition-all">
+                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </div>
+              </a>
             </div>
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-12 h-12 bg-slate-200 rounded-full overflow-hidden">
-                 <img src="../assets/testimonial-twitter-user.jpg" alt="User Name" class="w-full h-full object-cover">
-              </div>
-              <div>
-                 <div class="font-bold text-slate-900">User Name</div>
-                 <div class="text-xs text-slate-500">@handle</div>
-              </div>
-            </div>
-            <p class="text-slate-600 text-sm leading-relaxed">
-              "Amazing template! Shipped my SaaS in 3 days."
+            
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+              "I’ve seen dozens of boilerplates, but DreamStack is the first one I’d actually call 'Production-Ready.' The way it abstracts the framework layer is genius, switching between Express and Hono without touching business logic is a total game-changer for speed and scaling. If you're serious about your backend, this is the foundation you want."
             </p>
           </div>
-          -->
         </div>
       </div>
     </section>
@@ -1522,7 +1661,7 @@
                 >
                   <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path
-                      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.006-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
                     />
                   </svg>
                   GitHub
@@ -1629,6 +1768,25 @@
               </div>
             </div>
           </div>
+
+          <!-- Transition to FAQ -->
+          <div class="mt-4 bg-slate-50 rounded-xl p-6 border border-slate-200">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-brand-blue/10 rounded-lg flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <div class="font-semibold text-slate-900 mb-1">
+                  Still Have Questions?
+                </div>
+                <div class="text-sm text-slate-600 leading-relaxed">
+                  I've poured everything I know about backend architecture into this. If you have specific questions about how it works, check the <a href="#faq" class="text-brand-blue hover:underline font-medium">FAQs below</a> or <a href="https://x.com/katafyi" target="_blank" class="text-brand-blue hover:underline font-medium">reach out to me directly</a>.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1643,6 +1801,38 @@
         </h2>
 
         <div class="space-y-4">
+          <!-- Lifetime Value FAQ -->
+          <details
+            class="group bg-blue-50/50 border border-blue-100 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden open:bg-blue-50 transition-colors"
+          >
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-bold text-brand-blue flex items-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                What makes DreamStack a "living" asset?
+              </h3>
+              <span
+                class="ml-4 flex-shrink-0 text-brand-blue group-open:rotate-180 transition-transform"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-4 text-slate-700 leading-relaxed">
+              Most boilerplates become "technical debt" the moment a framework updates (e.g., Express 4 to 5 or Hono breaking changes). Because DreamStack decouples your business logic from the underlying framework, we can ship engine updates that you can swap in without refactoring your entire app. You aren't just buying code; you're buying a foundation that evolves.  
+            </p>
+          </details>
+
           <details
             class="group bg-white border border-slate-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden"
           >
@@ -2089,7 +2279,7 @@
             href="https://buy.dreamverse.ng"
             class="inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-[#e66a20] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-brand-orange/20 hover:shadow-xl hover:-translate-y-0.5"
           >
-            Get the A+ Rated Stack
+            Get Early Bird Access - $197
             <svg
               class="w-5 h-5"
               fill="none"
@@ -2159,6 +2349,13 @@
           <div>
             <h3 class="font-bold text-slate-900 mb-4">Connect</h3>
             <ul class="space-y-3 text-sm text-slate-500">
+              <li>
+                <a
+                  href="https://discord.gg/NmqnJgeJ"
+                  class="hover:text-brand-blue transition-colors"
+                  >Discord Community</a
+                >
+              </li>
               <li>
                 <a
                   href="https://x.com/katafyi"
