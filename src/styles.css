@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar for code blocks (moved from index.html) */
+.code-scroll::-webkit-scrollbar {
+	height: 8px;
+}
+.code-scroll::-webkit-scrollbar-track {
+	background: #1e1e1e;
+}
+.code-scroll::-webkit-scrollbar-thumb {
+	background: #4a4a4a;
+	border-radius: 4px;
+}
+
+/* Any additional custom styles can go here. */
