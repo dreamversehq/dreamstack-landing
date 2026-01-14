@@ -1,14 +1,4 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    {
-      "source": "/dreamstack/:page",
-      "destination": "/dreamstack/:page.html"
-    },
-    {
-      "source": "/dreamstack",
-      "destination": "/dreamstack/index.html"
-    }
-  ]
+  "trailingSlash": false
 }

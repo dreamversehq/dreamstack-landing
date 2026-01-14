@@ -12,39 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"> 
 
     <script defer src="https://cloud.umami.is/script.js" data-website-id="67bb4602-7b4e-4e91-8ceb-de12c11fe19d"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        'brand-orange': '#FF7E33',
-                        'brand-blue': '#0069FF',
-                        'brand-blue-light': '#3498DB',
-                        'brand-gray': '#333333',
-                        'brand-gray-light': '#F5F5F5',
-                    },
-                    animation: {
-                        'infinite-scroll': 'infinite-scroll 25s linear infinite',
-                    },
-                    keyframes: {
-                        'infinite-scroll': {
-                            from: { transform: 'translateX(0)' },
-                            to: { transform: 'translateX(-100%)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        /* Set font family; allow normal scrolling on all viewports */
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    </style>
+    <link rel="stylesheet" href="/src/styles.css" />
 </head>
 <body class="bg-white text-slate-600 antialiased selection:bg-brand-orange/20 selection:text-brand-orange relative overflow-x-hidden">
     <!-- Subtle Grid Background -->
@@ -73,12 +41,12 @@
 
             <div class="max-w-2xl space-y-6">
                 <p class="text-lg md:text-xl text-slate-600 leading-relaxed">
-                    DreamVerse is a software studio dedicated to crafting developer tools that prioritize <span class="font-semibold text-slate-900">clean architecture</span>, <span class="font-semibold text-slate-900">maintainability</span>, and <span class="font-semibold text-slate-900">developer experience</span>.
+                    DreamVerse is a software studio dedicated to crafting developer tools that prioritize <span class="font-semibold text-slate-900">modular design</span>, <span class="font-semibold text-slate-900">scalability</span>, and <span class="font-semibold text-slate-900">developer experience</span>.
                 </p>
                 <p class="text-lg md:text-xl text-slate-600 leading-relaxed">
                     Our flagship product, 
-                    <a href="./dreamstack/index" class="font-bold text-brand-blue hover:text-brand-blue-light underline decoration-2 underline-offset-4 transition-colors">DreamStack</a>, 
-                    is a production-ready Node.js backend template designed for long-lived, real-world systems.
+                    <a href="./dreamstack/" class="font-bold text-brand-blue hover:text-brand-blue-light underline decoration-2 underline-offset-4 transition-colors">DreamStack</a>, 
+                    is an A+ rated Node.js backend foundation built to launch your MVP/SaaS in days, scale to your first 100k+ users and maintain for years.
                 </p>
                 
                 <p class="text-base font-light text-slate-400 italic pt-4 border-t border-slate-100 inline-block">
@@ -87,7 +55,7 @@
             </div>
 
             <div class="mt-6 mb-8 lg:mb-16">
-                <a href="./dreamstack/index" class="inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-[#e66a20] text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-lg shadow-brand-orange/20 hover:shadow-xl hover:-translate-y-0.5 group">
+                <a href="./dreamstack/" class="inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-[#e66a20] text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-lg shadow-brand-orange/20 hover:shadow-xl hover:-translate-y-0.5 group">
                     View DreamStack
                     <span class="group-hover:translate-x-1 transition-transform">→</span>
                 </a>
