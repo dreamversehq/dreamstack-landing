@@ -1,12 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/dreamstack/:page",
-      "destination": "/dreamstack/:page.html"
-    },
-    {
       "source": "/dreamstack",
       "destination": "/dreamstack/index.html"
+    },
+    {
+      "source": "/dreamstack/:page",
+      "destination": "/dreamstack/:page.html"
     }
   ]
 }
