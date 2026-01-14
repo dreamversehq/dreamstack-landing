@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamVerse | Software Foundations</title>
+    <meta name="description" content="DreamVerse — Building production-grade software foundations. Parent brand of DreamStack.">
+
+    <link rel="icon" href="/assets/logo-svg-BuwaHZMr.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"> 
+
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="67bb4602-7b4e-4e91-8ceb-de12c11fe19d"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-orange': '#FF7E33',
+                        'brand-blue': '#0069FF',
+                        'brand-blue-light': '#3498DB',
+                        'brand-gray': '#333333',
+                        'brand-gray-light': '#F5F5F5',
+                    },
+                    animation: {
+                        'infinite-scroll': 'infinite-scroll 25s linear infinite',
+                    },
+                    keyframes: {
+                        'infinite-scroll': {
+                            from: { transform: 'translateX(0)' },
+                            to: { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Set font family; allow normal scrolling on all viewports */
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-white text-slate-600 antialiased selection:bg-brand-orange/20 selection:text-brand-orange relative overflow-x-hidden">
+    <!-- Subtle Grid Background -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] -z-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white -z-10"></div>
+
+    <main class="min-h-screen flex flex-col justify-between max-w-7xl mx-auto px-6 py-8 md:px-12 md:py-12 lg:px-16 lg:py-16">
+        
+        <header>
+            <a href="./index" class="flex items-center gap-2">
+                <img src="/assets/logo-svg-BuwaHZMr.svg" alt="DreamVerse Logo" class="w-8 h-8" onerror="this.style.display='none'; document.getElementById('fallback-icon').style.display='block';">
+                
+                <svg id="fallback-icon" class="w-8 h-8 text-brand-orange hidden" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+
+                <span class="font-bold text-xl tracking-tight text-slate-900">DreamVerse</span>
+            </a>
+        </header>
+
+        <section class="flex flex-col items-start max-w-4xl mt-12 md:mt-0">
+            <h1 class="mt-8 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-8">
+                Building production-grade <br class="hidden sm:block" />
+                software foundations.
+            </h1>
+
+            <div class="max-w-2xl space-y-6">
+                <p class="text-lg md:text-xl text-slate-600 leading-relaxed">
+                    DreamVerse is a software studio dedicated to crafting developer tools that prioritize <span class="font-semibold text-slate-900">clean architecture</span>, <span class="font-semibold text-slate-900">maintainability</span>, and <span class="font-semibold text-slate-900">developer experience</span>.
+                </p>
+                <p class="text-lg md:text-xl text-slate-600 leading-relaxed">
+                    Our flagship product, 
+                    <a href="./dreamstack/index" class="font-bold text-brand-blue hover:text-brand-blue-light underline decoration-2 underline-offset-4 transition-colors">DreamStack</a>, 
+                    is a production-ready Node.js backend template designed for long-lived, real-world systems.
+                </p>
+                
+                <p class="text-base font-light text-slate-400 italic pt-4 border-t border-slate-100 inline-block">
+                    More products and services are in progress.
+                </p>
+            </div>
+
+            <div class="mt-6 mb-8 lg:mb-16">
+                <a href="./dreamstack/index" class="inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-[#e66a20] text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-lg shadow-brand-orange/20 hover:shadow-xl hover:-translate-y-0.5 group">
+                    View DreamStack
+                    <span class="group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+            </div>
+        </section>
+
+        <footer class="mt-16 md:mt-0 flex flex-col md:flex-row justify-between items-start md:items-end gap-12 border-t md:border-t-0 border-slate-100 pt-8 md:pt-0">
+            
+            <div class="flex items-start gap-4">
+                <div class="space-y-1">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Creator of DreamStack</p>
+                    <p class="text-slate-900 font-bold text-lg leading-none">Built by Abubakar Usman (Kata)</p>
+                    <p class="text-sm text-slate-500 font-medium">Founder at <a href="./index" class="hover:text-brand-blue transition-colors">DreamVerse</a></p>
+                    <div style="margin-top: 1.3em;" class=" mt-4 flex items-center gap-2">
+                        <span class="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Abuja 🇳🇬 — Competing globally</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-start md:items-end gap-4 w-full md:w-auto">
+                <nav class="flex gap-6">
+                    <a href="https://github.com/dreamversehq" class="text-sm font-semibold text-slate-400 hover:text-brand-blue transition-colors">GitHub</a>
+                    <a href="https://x.com/joindreamverse" class="text-sm font-semibold text-slate-400 hover:text-brand-blue transition-colors">X (Twitter)</a>
+                    <a href="https://www.linkedin.com/company/dreamversehq" class="text-sm font-semibold text-slate-400 hover:text-brand-blue transition-colors">LinkedIn</a>
+                </nav>
+                
+                <p class="text-xs text-slate-400 font-medium">
+                    &copy; 2026 DreamVerse. All rights reserved.
+                </p>
+            </div>
+        </footer>
+
+    </main>
+</body>
+</html>

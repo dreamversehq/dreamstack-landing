@@ -4,5 +4,8 @@ export default {
   },
   preview: {
     open: true
+  },
+  build: {
+    outDir: "dist"
   }
 }

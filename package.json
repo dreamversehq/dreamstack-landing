@@ -5,10 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build:css": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify --content \"./dist/**/*.html\"",
-    "build": "vite build && pnpm run build:css",
-    "preview": "vite preview",
-    "update-browserslist": "npx update-browserslist-db@latest"
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
