@@ -2,6 +2,12 @@ import { resolve } from 'path'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+  appType: 'mpa',
+  resolve: {
+    alias: [
+      { find: /^\/dreamstack$/, replacement: '/dreamstack/index.html' }
+    ]
+  },
   server: {
     open: true
   },

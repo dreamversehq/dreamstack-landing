@@ -1507,7 +1507,7 @@
           </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
           <!-- Testimonial 1 (LinkedIn) -->
           <div class="group bg-slate-50 pt-8 px-8 pb-8 rounded-2xl border border-slate-100 flex flex-col h-full hover:shadow-sm transition-all hover:border-brand-blue relative">
             <div class="flex justify-between items-start mb-6">
@@ -1562,29 +1562,6 @@
             </p>
           </div>
           
-          <!-- Testimonial 3 (Twitter/X) -->
-          <div class="group bg-slate-50 pt-8 px-8 pb-8 rounded-2xl border border-slate-100 flex flex-col h-full hover:shadow-sm transition-all hover:border-brand-blue relative">
-            <div class="flex justify-between items-start mb-6">
-              <a href="https://x.com/ennycodes" target="_blank" class="flex items-center gap-4 group/profile">
-                <div class="w-12 h-12 bg-slate-200 rounded-full overflow-hidden shrink-0 ring-0 group-hover/profile:ring-2 group-hover/profile:ring-brand-blue group-hover/profile:ring-offset-2 transition-all duration-300">
-                   <img src="../assets/testimonial-enny.jpg" alt="Eniola" class="w-full h-full object-cover transform group-hover/profile:scale-110 transition-transform duration-500">
-                </div>
-                <div>
-                   <div class="font-bold text-slate-900 leading-tight group-hover/profile:text-brand-blue transition-colors">Eniola</div>
-                   <div class="text-xs text-slate-500 font-medium">@ennycodes</div>
-                </div>
-              </a>
-              <a href="https://x.com/ennycodes" target="_blank" class="flex flex-col items-center gap-2 shrink-0 group/icon">
-                <div class="text-slate-400 opacity-80 group-hover/icon:opacity-100 group-hover/icon:scale-110 group-hover/icon:text-black transition-all">
-                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </div>
-              </a>
-            </div>
-            
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              "I’ve seen dozens of boilerplates, but DreamStack is the first I’d actually call 'Production-Grade.' The way it abstracts the framework layer is genius, switching frameworks and infra without touching business logic is a total game-changer for speed and scaling. If you're serious about your backend, this is the foundation you need."
-            </p>
-          </div>
         </div>
       </div>
     </section>
@@ -2134,20 +2111,32 @@
       <div class="max-w-7xl mx-auto">
         <div class="grid md:grid-cols-4 gap-8 mb-12">
           <div class="col-span-1 md:col-span-2">
-            <a href="#" class="flex items-center gap-2 mb-4">
+            <a href="#" class="inline-flex items-center gap-2.5 mb-6 group">
               <img
                 src="../assets/logo-svg.svg"
                 alt="DreamStack Logo"
-                class="w-6 h-6"
+                class="w-8 h-8 group-hover:scale-110 transition-transform duration-300"
               />
-              <span class="font-bold text-lg tracking-tight text-slate-900"
+              <span class="font-bold text-xl tracking-tight text-slate-900"
                 >DreamStack</span
               >
             </a>
-            <p class="text-sm text-slate-500 max-w-xs leading-relaxed">
-              Production-ready Node.js backend foundation. Built in Abuja 🇳🇬 for
-              developers, founders and builders worldwide.
+            <p class="text-sm text-slate-500 max-w-sm leading-relaxed mb-6">
+              The enterprise-grade Node.js foundation. Stop building your MVP on technical debt. 
+              Start shipping and scale to your first 100k+ users on a clean, modular, and tested architecture from day one.
             </p>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-500">
+                <span class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200">
+                    <span>🇳🇬</span> Built in Abuja
+                </span>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1.5">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    v1.0.0 Stable
+                </span>
+            </div>
           </div>
           <div>
             <h3 class="font-bold text-slate-900 mb-4">Product</h3>
